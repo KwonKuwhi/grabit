@@ -74,6 +74,7 @@
 
 **LIBRARAY** <br>
 <img src="https://img.shields.io/badge/reacthookform-EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white" />
+<img src="https://img.shields.io/badge/yup-FFD700.svg?style=for-the-badge" />
 
 
 **NPM** <br>
@@ -308,8 +309,8 @@ REDIRECT_URI=[RedirectURI]
 AWS_S3_BUCKET=[yourBucket]
 AWS_S3_ACCESS_KEY=[yourkey]
 AWS_S3_SECRET_ACCESS_KEY=[yourSecretKey]
-AWS_REGION=ap-northeast-2
-AUTH_AI=Bearer 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
+AWS_REGION=[region]
+AUTH_AI=[AI]
 TOSS_SECRET_KEY=[yourTossKey]
 AWS_EC2_URL=http://[address]:3000
 AWS_EC2_CLIENT=https://[Address]:5173
