@@ -92,12 +92,83 @@
 
 | 아키텍처 (Architecture) | 
 | --- |
-| |
+|  |
+
+<br>
 
 | 개체 관계 모델 (ERD) | 
 | --- |
-| |
+|  |
 
-| 클라이언트 폴더 구조 | 
-| --- |
-| |
+<br>
+
+#### 폴더 구조 (client)
+```jsx
+client
+├─ node_modules
+├─ public
+├─ src
+│   ├─ api
+│   ├─ components
+│   │     ├─ progress
+│   │     └─ ui
+│   ├─── context
+│   ├─── data
+│   ├─── lib
+│   ├─── page
+│   │     ├─ challenge
+│   │     ├─ home
+│   │     └─ myPage
+│   ├─── services
+│   ├─── store
+│   └─── types    	
+├─ .gitignore
+├─ package.json
+└── README.md
+
+```
+
+<br>
+
+#### 폴더 구조 (server)
+
+```jsx
+server
+├─ db
+├─ src
+│  ├─ middleware
+│  └── modules
+│       ├─── auth
+│       │     ├─ dto
+│       │     ├─ guards
+│       │     └─ strategies
+│       │		
+│       ├─ challenge
+│       │     └─ dto 
+│       │
+│       ├─ daily_mission
+│       ├─ friend
+│       │     └─ dto
+│	      │
+│       ├─ notification
+│       │     └─ dto
+│       └── user 
+│             └─ dto
+│
+├─ test
+│
+├─ .Dockerignore
+├─ .eslintrc.js
+├─ .prettierrc.json
+├─ Dockerfile
+├─ drizzle.config.ts
+├─ github-action.yml
+├─ nest-cli.json
+├─ postgresQuery.sql
+├─ tsconfig.build.json
+├─ tsconfig.json
+├─ package-lock.json
+├─ package.json
+└─ README.md
+```
+
