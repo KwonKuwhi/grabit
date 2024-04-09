@@ -15,6 +15,7 @@
       
 <br><br><br>
 
+
 ## 💁🏻 웹 서비스 소개
 
 **그래빗** 은 내기를 통해 함께 목표를 이뤄나가는 습관 형성 플랫폼입니다.
@@ -55,14 +56,26 @@
 <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white" />
 
 **LIBRARAY** <br>
-
+<img src="https://img.shields.io/badge/reacthookform-EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white" />
+엽
 
 **NPM** <br>
+<img src="https://img.shields.io/badge/axios-5A29E4.svg?style=for-the-badge&logo=axios&logoColor=white" />
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4.svg?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+<img src="https://img.shields.io/badge/shadcnui-000000.svg?style=for-the-badge&logo=shadcnui&logoColor=white" />
+<img src="https://img.shields.io/badge/redux-764ABC.svg?style=for-the-badge&logo=redux&logoColor=white" />
+
 
 
 <br><br>
 
 ### # Back-end
+<img src="https://img.shields.io/badge/nestjs-E0234EF.svg?style=for-the-badge&logo=nestjs&logoColor=white" /> <img src="https://img.shields.io/badge/bun-000000.svg?style=for-the-badge&logo=bun&logoColor=white" /> <img src="https://img.shields.io/badge/typescript-3178C6.svg?style=for-the-badge&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/postgresql-4169E1.svg?style=for-the-badge&logo=postgresql&logoColor=white" /> <img src="https://img.shields.io/badge/passport-34E27A.svg?style=for-the-badge&logo=passport&logoColor=white" /> <img src="https://img.shields.io/badge/JWT-000000.svg?style=for-the-badge&logo=jsonwebtokens&logoColor=white" /> <img src="https://img.shields.io/badge/OAuth2-EB5424.svg?style=for-the-badge&logo=auth0&logoColor=white" />
+<img src="https://img.shields.io/badge/toss%20payments-0050FF.svg?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iODQiIGhlaWdodD0iNzciIHZpZXdCb3g9IjAgMCA4NCA3NyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzE1MjNfMTU4MSkiPgo8cGF0aCBkPSJNNzAuNTUwNCAxOS4wNzU4QzcwLjU1MDQgMTkuMDc1OCA2MC41OTQ5IDE1LjI0MjIgNDguOTg2NyAxNi44Nzg3QzQ5LjIzOTEgMTUuNDc1OCA1MS4zODEzIDMuMzM1OTIgNTAuNDg0MyAwLjQzNzM1OEM1MC40ODQzIDAuNDM3MzU4IDUwLjA1NzYgLTAuMjA2MzA3IDQ3Ljk2MDEgMC4wNjgwNzYxQzQ1Ljg2MjEgMC4zNDI0NTkgMzAuNzcyNSAyLjk0NzAzIDE1LjM4NjIgMTUuMTQ5M0MtMy41NjI4M2UtMDUgMjcuMzUxNiAtMy42MTYxZS0wNSAzOS4yNzk2IC0zLjYxNjFlLTA1IDQwLjY1MDRDLTMuNjE2MWUtMDUgNDIuMDIxMyAtMC4xMDU2NjMgNTIuMzA0IDEzLjQ0OTUgNTcuOTI1MkMxMy40NDk1IDU3LjkyNTIgMjMuNDE4NiA2MS42MzQ2IDM1LjAzNzEgNTkuOTg5M0MzNS4wMzcxIDU5Ljk4OTMgMzIuNTYyOSA3My40ODYxIDMzLjUxNTcgNzYuNTYzMkMzMy41MTU3IDc2LjU2MzIgMzMuOTQyMyA3Ny4yMDY4IDM2LjAzOTggNzYuOTMyNEMzOC4xMzc4IDc2LjY1ODEgNTMuMjI3NSA3NC4wNTM1IDY4LjYxMzcgNjEuODUxMkM4NCA0OS42NDg5IDg0IDM3LjcyMTUgODQgMzYuMzUwNkM4NCAzNC45Nzk3IDg0LjEwNTYgMjQuNjk3IDcwLjU1MDQgMTkuMDc1OFoiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTUyM18xNTgxIj4KPHJlY3Qgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijc3IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="/> <img src="https://img.shields.io/badge/docker-2496ED.svg?style=for-the-badge&logo=docker&logoColor=white" />
+
+
+### #DevOps
+<img src="https://img.shields.io/badge/amazonec2-FF9900.svg?style=for-the-badge&logo=amazonec2&logoColor=white" /> <img src="https://img.shields.io/badge/amazons3-569A31.svg?style=for-the-badge&logo=amazons3&logoColor=white" /> <img src="https://img.shields.io/badge/githubactions-2088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white" />
 
 
 
