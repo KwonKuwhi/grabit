@@ -90,7 +90,7 @@
 
 | 아키텍처 (Architecture) | 
 | --- |
-|  |
+| |
 
 <br>
 
@@ -169,4 +169,20 @@ server
 ├─ package.json
 └─ README.md
 ```
+
+## 개발 팀 소개
+
+
+| <img src="https://avatars.githubusercontent.com/u/148730840?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/44645578?v=4" width=100px height=100px> | <img src="" width=100px height=100px> | <img src="" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/148730848?v=4" width=100px height=100px> |
+| :---: | :---: | :---: | :---: | :---: |
+| [권구휘<br>(Front-end, 팀장)](https://github.com/KwonKuwhi) | [김시진<br>(Back-end)](https://github.com/seejnn) | [김예원<br>(Back-end)](https://github.com/yewonkim301) | [성룡<br>(Front-end)](https://github.com/ryong123) | [정민수<br>(Back-end)](https://github.com/minsuje) |
+
+
+| 이름 | 역할 | 개발 내용 |
+| --- | --- | --- |
+| 정민수 | Back-end, 팀장 | - Nest.js, postgreSQL, drizzleORM 초기 설정<br>- Nest.js 로 RESTful API 작성<br>&nbsp;&nbsp;&nbsp;- 회원 가입 기능 개발<br>&nbsp;&nbsp;&nbsp;- 회원 정보 조회 및 수정, 삭제 개발<br>&nbsp;&nbsp;&nbsp;- 챌린지 결과 정보 구현<br>&nbsp;&nbsp;&nbsp;- 챌린지 히스토리 조회 개발<br>&nbsp;&nbsp;&nbsp;- 챌린지 결과 알림 기능 개발<br>&nbsp;&nbsp;&nbsp;- Cron 기능을 이용한 지난 기록 자동 삭제 기능 개발<br>- toss payments 를 이용한 결제 기능 구현<br>- Passprot, JWT를 이용한 Login 기능 구현<br>&nbsp;&nbsp;&nbsp;- Oauth2 를 이용한 Social Login 구현 (카카오) |
+| 김예원 | Back-end | - DB 설계<br>- Nest.js, postgreSQL, drizzleORM 초기 설정<br>- Nest.js 로 RESTful API 작성<br>&nbsp;&nbsp;&nbsp;- 챌린지 생성 및 수정, 삭제 개발<br>&nbsp;&nbsp;&nbsp;- 챌린지 인증 관련 개발<br>&nbsp;&nbsp;&nbsp;- 챌린지 인증 사진에 대한 이모지 생성 및 수정, 삭제 개발<br>&nbsp;&nbsp;&nbsp;- 회원 정보 조회 및 수정, 삭제 개발<br>&nbsp;&nbsp;&nbsp;- 챌린지 히스토리 조회 개발<br>&nbsp;&nbsp;&nbsp;- 친구 및 챌린지 관련 알람 기능 개발<br>- toss payments 를 이용한 결제 기능 구현<br>- s3 presigned url 을 이용한 이미지 관련 미들웨어 개발<br>&nbsp;&nbsp;&nbsp;- 프로필 이미지 생성 및 수정, 삭제<br>&nbsp;&nbsp;&nbsp;- 챌린지 인증 이미지 생성 및 삭제<br>- swagger |
+| 김시진 | Full-stack | - Nest.js, postgreSQL, drizzleORM 초기 설정<br>- Nest.js 로 RESTful API 작성<br>&nbsp;&nbsp;&nbsp;- 친구 조회 및 수정, 삭제 구현<br>&nbsp;&nbsp;&nbsp;- 친구 관련 알림 기능 개발<br>- OpenAI Vision API 활용 챌린지 인증 자동화 구현<br>- docker 및 github actions CI/CD 구축<br>- Framer-motion 활용 페이지 전환 애니메이션 구현<br>- react-router-dom nested route, protected route 활용 라우트 구성<br>- UI 디자인 |
+| 성룡 | Front-end | - 챌린지 결과 페이지 구현<br>&nbsp;&nbsp;&nbsp; - 챌린지 결과 페이지<br>- 마이페이지 구현<br>- 회원가입 페이지 구현<br>- 팔로우 기능 구현<br>- 히스토리 페이지 구현<br>&nbsp;&nbsp;&nbsp;- 승 패 결과 확인 가능<br>- 유저 검색 기능 구현<br>- 친구 추가, 삭제, 거절 기능 구현<br>- 랭킹 구현 |
+| 권구휘 | Front-end | - 챌린지 진행 사항 확인 페이지 구현<br>&nbsp;&nbsp;&nbsp;- 챌린지 진행률, 성공률 계산<br>&nbsp;&nbsp;&nbsp;- 인증 사진 업로드<br>&nbsp;&nbsp;&nbsp;- 챌린지 완료 시 결과 전송<br>- 데일리 미션 페이지 구현<br>- 알림 페이지 구현<br>- 메인페이지 구현<br>&nbsp;&nbsp;&nbsp;- 인기있는 챌린지 목록<br>&nbsp;&nbsp;&nbsp;- 데일리 미션<br>&nbsp;&nbsp;&nbsp;- 내 챌린지 목록<br>&nbsp;&nbsp;&nbsp;- 포인트 순위 |
 
