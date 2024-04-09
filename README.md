@@ -103,13 +103,13 @@
 
 | 아키텍처 (Architecture) | 
 | --- |
-| |
+| <img width="809" alt="Untitled" src="https://github.com/minsuje/grabit/assets/148730840/efa02539-2c0e-446a-afe9-ebf3b55f31d7">|
 
 <br>
 
 | 개체 관계 모델 (ERD) | 
 | --- |
-|  |
+| ![grabit](https://github.com/minsuje/grabit/assets/148730840/2b08fd66-131b-4c90-947a-7df478391029)|
 
 <br>
 
@@ -186,7 +186,7 @@ server
 ## 개발 팀 소개
 
 
-| <img src="https://avatars.githubusercontent.com/u/148730840?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/44645578?v=4" width=100px height=100px> | <img src="" width=100px height=100px> | <img src="" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/148730848?v=4" width=100px height=100px> |
+| <img src="https://avatars.githubusercontent.com/u/148730840?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/44645578?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/128135999?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/148741796?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/148730848?v=4" width=100px height=100px> |
 | :---: | :---: | :---: | :---: | :---: |
 | [권구휘<br>(Front-end, 팀장)](https://github.com/KwonKuwhi) | [김시진<br>(Back-end)](https://github.com/seejnn) | [김예원<br>(Back-end)](https://github.com/yewonkim301) | [성룡<br>(Front-end)](https://github.com/ryong123) | [정민수<br>(Back-end)](https://github.com/minsuje) |
 
