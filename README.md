@@ -22,7 +22,7 @@
 | --- | --- |
 | 진행 기간 | 2024. 01. 15 ~ 2024. 02. 06 (23일) |
 | 팀명 / 팀원 | II / 5명 ( 프론트 2명, 백 2명, 풀스택 1명) |
-| github 주소 | https://github.com/minsuje/grabit.git |
+| github 주소 | https://github.com/minsuje/grabit |
 | 배포 주소 | https://g-rabit.site |
 
 <br><br><br>
