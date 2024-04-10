@@ -221,7 +221,7 @@ server
 
 | <img src="https://avatars.githubusercontent.com/u/148730840?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/44645578?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/128135999?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/148741796?v=4" width=100px height=100px> | <img src="https://avatars.githubusercontent.com/u/148730848?v=4" width=100px height=100px> |
 | :---: | :---: | :---: | :---: | :---: |
-| [권구휘<br>(Front-end, 팀장)](https://github.com/KwonKuwhi) | [김시진<br>(Back-end)](https://github.com/seejnn) | [김예원<br>(Back-end)](https://github.com/yewonkim301) | [성룡<br>(Front-end)](https://github.com/ryong123) | [정민수<br>(Back-end)](https://github.com/minsuje) |
+| [권구휘<br>(Front-end)](https://github.com/KwonKuwhi) | [김시진<br>(Back-end)](https://github.com/seejnn) | [김예원<br>(Back-end)](https://github.com/yewonkim301) | [성룡<br>(Front-end)](https://github.com/ryong123) | [정민수<br>(Back-end, 팀장)](https://github.com/minsuje) |
 
 
 | 이름 | 역할 | 개발 내용 |
