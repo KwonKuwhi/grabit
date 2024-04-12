@@ -62,6 +62,8 @@ const schema = yup
 
 export default function Register() {
   const [profilePic, setProfilePic] = useState<File>();
+  const [idCheckMessage, setIdCheckMessage] = useState('');
+  const [isIdAvailable] = useState(false);
   let fileUrl = '';
   let fileName = '';
 
@@ -69,12 +71,41 @@ export default function Register() {
     register,
     handleSubmit,
     watch,
+    setError,
+    clearErrors,
     formState: { errors },
-  } = useForm<RegisterForm>({ resolver: yupResolver(schema) });
+  } = useForm<RegisterForm>({
+    resolver: yupResolver(schema),
+    mode: 'onChange', // 폼 필드가 변경될 때마다 유효성 검사를 수행
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const userid = watch('userid'); // 아이디 필드를 실시간으로 관찰
+  useEffect(() => {
+    const subscription = watch((value, { name }) => {
+      if (name === 'userid') {
+        const userid = value.userid;
+        // 아이디 중복 검사 로직 수행
+        axios
+          .post('/checkid', { userid })
+          .then((res) => {
+            if (res.data.msg !== '사용가능한 아이디입니다.') {
+              setError('userid', {
+                type: 'manual',
+              });
+              setIdCheckMessage('이미 존재하는 아이디입니다.');
+            } else {
+              clearErrors('userid');
+              setIdCheckMessage('사용가능한 아이디입니다.');
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, setError, clearErrors]);
 
   useEffect(() => {
     dispatch(setHeaderInfo({ title: '회원가입', backPath: '/' }));
@@ -85,6 +116,11 @@ export default function Register() {
   }
 
   const onSubmit = async (form: RegisterForm) => {
+    // 아이디 중복 검사가 완료되었는지, 그리고 아이디가 사용 가능한지 확인
+    if (!isIdAvailable) {
+      alert('아이디 중복 검사를 확인해주세요.');
+      return;
+    }
     await axios({
       method: 'post',
       url: '/profileUpload/normal',
@@ -133,27 +169,20 @@ export default function Register() {
       }
     });
   };
+  // const duplicateCheck = async (userid: string) => {
+  //   if (!userid) return; // userid가 비어있으면 검사하지 않음
 
-  const duplicateCheck = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault(); // 버튼 클릭 시 폼 제출을 방지
-
-    console.log('input 값>>>>', userid);
-    await axios({
-      method: 'post',
-      url: '/checkid',
-      data: {
-        userid: userid, // 관찰하고 있는 아이디 값을 사용
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        // 중복 검사 결과에 따른 추가 처리...
-      })
-      .catch((err) => {
-        console.error(err);
-        // 오류 처리...
-      });
-  };
+  //   console.log('input 값>>>>', userid);
+  //   try {
+  //     const res = await axios.post('/checkid', { userid });
+  //     setIdCheckMessage(res.data.msg);
+  //     setIsIdAvailable(res.data.msg === '사용가능한 아이디입니다.');
+  //   } catch (err) {
+  //     console.error(err);
+  //     setIdCheckMessage('아이디 중복 검사 중 오류가 발생했습니다.');
+  //     setIsIdAvailable(false);
+  //   }
+  // };
 
   return (
     <div className="flex justify-center">
@@ -180,7 +209,8 @@ export default function Register() {
           </Label>
           <Input id="userid" {...register('userid')} />
           {errors.userid && <p className="text-xs text-red-500">{errors.userid.message}</p>}
-          <button onClick={duplicateCheck}>아이디 중복검사</button>
+          {/* <button onClick={duplicateCheck}>아이디 중복검사</button> */}
+          <p className={`text-xs ${isIdAvailable ? 'text-green-500' : 'text-red-500'}`}>{idCheckMessage}</p>
         </div>
         <div className="mt-10 flex w-full max-w-sm flex-col items-center gap-4">
           <Label className="flex w-full" htmlFor="profile_img">
