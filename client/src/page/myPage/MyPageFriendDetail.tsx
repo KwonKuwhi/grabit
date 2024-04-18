@@ -153,7 +153,6 @@ export default function MyPageFriendDetail() {
             {lose}
             <p className="ml-1 flex">패</p>
           </div>
-
         </div>
       </div>
 

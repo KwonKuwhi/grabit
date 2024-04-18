@@ -66,7 +66,6 @@ export class profileImgMiddleware implements NestMiddleware {
       }
       // '/profile/:userid'
       else if ('profile' === req.originalUrl.split('/')[1]) {
-        console.log('middleware req.originalUrl  > ', req.originalUrl);
         friend = await db
           .select({
             userid_num: users.userid_num,
@@ -75,7 +74,9 @@ export class profileImgMiddleware implements NestMiddleware {
             profile_img: users.profile_img,
           })
           .from(users)
-          .where(eq(users.userid, req.originalUrl.split('/')[2]));
+          .where(
+            eq(users.userid, decodeURIComponent(req.originalUrl.split('/')[2])),
+          );
       }
       friend = friend[0];
 

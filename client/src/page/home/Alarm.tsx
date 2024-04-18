@@ -54,7 +54,7 @@ function Alarm() {
           </div>
         );
         type = '친구 신청';
-        link = `/friend/${list.message.requestorName}`;
+        link = `/friend/${list.message.friendName}`;
         break;
 
       case 'challenge/create':
