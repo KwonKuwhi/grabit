@@ -45,7 +45,7 @@
 
 📍 '그래빗' 게스트 계정 정보
 <table>
-  <tr><td>아이디</td><td>test123456</td></tr>
+  <tr><td>아이디</td><td>rabbit12</td></tr>
   <tr><td>비밀번호</td><td>1q2w3e4r!</td></tr>
 </table>
 서비스를 구경하고 싶으시다면 상단의 계정 정보로 로그인 후 사용하실 수 있습니다.
