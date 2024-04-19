@@ -312,6 +312,7 @@ export class ChallengeService {
           userid_num
         ) {
           publicChallenge.push(publicChallengeAll[i]);
+          break;
         }
       }
     }
