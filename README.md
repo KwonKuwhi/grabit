@@ -1,5 +1,9 @@
 # grabit
 
+![grabit-cover](https://github.com/minsuje/grabit/assets/44645578/dd8f6bf4-ea32-4136-b3ed-2eae4ca685b9)
+
+
+
 <br><br><br>
 
 ## 목차
@@ -115,6 +119,21 @@
 | 팔로우 기능  | 사용자들이 서로 친구을 맺고, 상호 경쟁하며 다양한 챌린지에 참여할 수 있는 기능을 제공합니다. |
 | 알림  | 내가 초대된 챌린지, 친구신청 목록, 삭제된 챌린지 정보를 알림페이지에서 확인할 수 있습니다. 조회하지 않은 알림이 있을 경우 메인페이지 우측 상단에서 표시됩니다. |
 | 랭킹 기능 | 특정 점수에 도달할 때마다 랭크를 나누어 사용자의 꾸준한 접근을 유도합니다. |
+
+<br><br><br>
+
+
+| 기능 | 영상 |
+| --- | --- |
+| 데일리 미션 | <video muted autoplay playsinline loop src="https://github.com/minsuje/grabit/assets/44645578/f10e5706-e3cb-4aaa-b491-77f189d507f8"> |
+| 챌린지 생성 | <video muted autoplay playsinline loop src="https://github.com/minsuje/grabit/assets/44645578/e1f0275c-6abf-46a5-9bb7-6c3589a64bca"> |
+| 챌린지 조회 | <video muted autoplay playsinline loop src="https://github.com/minsuje/grabit/assets/44645578/7f8f110c-b39e-4561-a018-fb83fc598288"> |
+| 결제 기능 | <video muted autoplay playsinline loop src="https://github.com/minsuje/grabit/assets/44645578/e1321df5-645a-491b-bae8-fed824b46c69"> |
+| 챌린지 인증 | <video muted autoplay playsinline loop src="https://github.com/minsuje/grabit/assets/44645578/82341d62-3e73-4e14-be27-93d4f83af862"> |
+| 팔로우 기능 | <video muted autoplay playsinline loop src="https://github.com/minsuje/grabit/assets/44645578/32f23905-8d1b-4bc1-a1ca-96e373e337cf"> |
+| 알림 | <video muted autoplay playsinline loop src="https://github.com/minsuje/grabit/assets/44645578/462e06cd-e222-478d-afbb-f701d195568d"> |
+
+
 
 <br><br><br>
 
