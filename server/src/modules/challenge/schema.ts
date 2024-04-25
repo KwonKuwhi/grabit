@@ -6,9 +6,18 @@ import {
   timestamp,
   boolean,
   date,
+  jsonb,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import { users } from '../user/schema';
+import { json } from 'stream/consumers';
+
+type MyObjectType = {
+  /* object structure */
+  userid_num: number;
+  isAccept: boolean;
+  resultConfirm: boolean;
+};
 
 export const challenge = pgTable('challenge', {
   challenge_id: serial('challenge_id').primaryKey(),
@@ -19,7 +28,10 @@ export const challenge = pgTable('challenge', {
   challenge_name: varchar('challenge_name', { length: 200 }).notNull(),
   is_public: boolean('is_public').notNull().default(false),
   topic: varchar('topic', { length: 50 }).notNull(),
-  challenger_userid_num: integer('challenger_userid_num').array().notNull(),
+  auth_keyword: varchar('auth_keyword').notNull(),
+  challenger_userid_num: jsonb('challenger_userid_num')
+    .$type<MyObjectType[]>()
+    .notNull(),
   goal_money: integer('goal_money').notNull(),
   term: integer('term').notNull(),
   winner_userid_num: integer('winner_userid_num').array(),
@@ -59,6 +71,7 @@ export const authentication = pgTable('authentication', {
   authentication_img: varchar('authentication_img', {
     length: 200,
   }).notNull(),
+  authentication_status: boolean('authentication_status').notNull(),
 });
 
 export const authenticationRelations = relations(challenge, ({ many }) => ({

@@ -1,15 +1,15 @@
-import axios from 'axios';
+import axios from '@/api/axios';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { setHeaderInfo } from '@/store/headerSlice';
-import { useEffect } from 'react';
-import HeaderTitle from '@/components/HeaderTitle';
+
+import { useEffect, useState } from 'react';
+import Cta from '@/components/Cta';
 
 interface RegisterForm {
   name: string;
@@ -46,8 +46,8 @@ const schema = yup
     password: yup
       .string()
       .required('* 비밀번호는 필수입니다.')
-      .min(8, '최소 8자 이상 16자 이하 작성 가능합니다.')
-      .max(16, '최대 8자 이상 16자 이하 작성 가능합니다.')
+      .min(8, '최소 8자 이상 16자 이하로 작성해주세요.')
+      .max(16, '최대 8자 이상 16자 이하로 작성해주세요.')
       .matches(
         /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()])[a-zA-Z0-9!@#$%^&*()]{8,16}$/,
         '비밀번호는 영어, 숫자, 특수문자로 작성해주세요.',
@@ -61,66 +61,186 @@ const schema = yup
   .required();
 
 export default function Register() {
+  const [profilePic, setProfilePic] = useState<File>();
+  const [idCheckMessage, setIdCheckMessage] = useState('');
+  const [isIdAvailable] = useState(false);
+  let fileUrl = '';
+  let fileName = '';
+
   const {
     register,
     handleSubmit,
+    watch,
+    setError,
+    clearErrors,
     formState: { errors },
-  } = useForm<RegisterForm>({ resolver: yupResolver(schema) });
+  } = useForm<RegisterForm>({
+    resolver: yupResolver(schema),
+    mode: 'onChange', // 폼 필드가 변경될 때마다 유효성 검사를 수행
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const subscription = watch((value, { name }) => {
+      if (name === 'userid') {
+        const userid = value.userid;
+        // 아이디 중복 검사 로직 수행
+        axios
+          .post('/checkid', { userid })
+          .then((res) => {
+            if (res.data.msg !== '사용가능한 아이디입니다.') {
+              setError('userid', {
+                type: 'manual',
+              });
+              setIdCheckMessage('이미 존재하는 아이디입니다.');
+            } else {
+              clearErrors('userid');
+              setIdCheckMessage('사용가능한 아이디입니다.');
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, setError, clearErrors]);
 
   useEffect(() => {
     dispatch(setHeaderInfo({ title: '회원가입', backPath: '/' }));
   }, [dispatch]);
 
-  const onSubmit = async (data: RegisterForm) => {
-    try {
-      const response = await axios.post('http://localhost:3000/register/normal', data);
-      console.log('회원가입 성공:', response);
-      navigate('/login');
-    } catch (err) {
-      console.error('회원가입 실패:', err);
+  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    setProfilePic(e.target.files![0]);
+  }
+
+  const onSubmit = async (form: RegisterForm) => {
+    // 아이디 중복 검사가 완료되었는지, 그리고 아이디가 사용 가능한지 확인
+    if (!isIdAvailable) {
+      alert('아이디 중복 검사를 확인해주세요.');
+      return;
     }
+    await axios({
+      method: 'post',
+      url: '/profileUpload/normal',
+      data: {
+        filename: profilePic?.name,
+        type: profilePic?.type,
+      },
+    }).then((res) => {
+      if (res.data !== '') {
+        fileUrl = res.data;
+
+        const regex = /\/([^/?#]+)[^/]*$/;
+        const match = fileUrl.match(regex);
+
+        // 추출된 파일 이름 출력
+        if (match && match[1]) {
+          fileName = match[1];
+        }
+
+        axios({
+          method: 'put',
+          url: res.data,
+          data: profilePic,
+          headers: {
+            'Content-Type': profilePic?.type,
+          },
+        });
+      }
+      try {
+        axios({
+          method: 'post',
+          url: '/register/normal',
+          data: {
+            name: form.name,
+            userid: form.userid,
+            nickname: form.nickname,
+            password: form.password,
+            profile_img: fileName,
+          },
+        });
+        alert('회원가입이 완료되었습니다!');
+        navigate('/login');
+      } catch (err) {
+        alert('회원가입 실패');
+        console.error('회원가입 실패:', err);
+      }
+    });
   };
+  // const duplicateCheck = async (userid: string) => {
+  //   if (!userid) return; // userid가 비어있으면 검사하지 않음
+
+  //   console.log('input 값>>>>', userid);
+  //   try {
+  //     const res = await axios.post('/checkid', { userid });
+  //     setIdCheckMessage(res.data.msg);
+  //     setIsIdAvailable(res.data.msg === '사용가능한 아이디입니다.');
+  //   } catch (err) {
+  //     console.error(err);
+  //     setIdCheckMessage('아이디 중복 검사 중 오류가 발생했습니다.');
+  //     setIsIdAvailable(false);
+  //   }
+  // };
 
   return (
-    <div className="container flex justify-center">
-      <HeaderTitle />
+    <div className="flex justify-center">
       <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="mt-20 flex max-w-sm flex-col items-center justify-center gap-4"
+        // onSubmit={handleSubmit(onSubmit)}
+        className="mt-4 flex max-w-sm flex-col items-center justify-center gap-4"
       >
-        <h1>회원가입</h1>
-        <div className="mt-10 flex grid w-full max-w-sm items-center gap-2">
-          <Label htmlFor="name">이름</Label>
+        <h1 className="w-full">회원가입</h1>
+        <span className="w-full text-gray-500">
+          반가워요!
+          <br />
+          그래빗과 함께 습관을 길러봐요
+        </span>
+        <div className="mt-10 flex w-full max-w-sm flex-col items-center gap-4">
+          <Label className="flex w-full" htmlFor="name">
+            이름
+          </Label>
           <Input id="name" {...register('name')} />
           {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
         </div>
-        <div className="mt-10 flex grid w-full max-w-sm items-center gap-2">
-          <Label htmlFor="userid">아이디</Label>
+        <div className="mt-10 flex  w-full max-w-sm flex-col items-center gap-4">
+          <Label className="flex w-full" htmlFor="userid">
+            아이디
+          </Label>
           <Input id="userid" {...register('userid')} />
           {errors.userid && <p className="text-xs text-red-500">{errors.userid.message}</p>}
+          {/* <button onClick={duplicateCheck}>아이디 중복검사</button> */}
+          <p className={`text-xs ${isIdAvailable ? 'text-green-500' : 'text-red-500'}`}>{idCheckMessage}</p>
         </div>
-        <div className="mt-10 flex grid w-full max-w-sm items-center gap-2">
-          <Label htmlFor="profilePic">프로필 사진</Label>
-          <Input type="file" id="profilePic" {...register('profilePic')} />
+        <div className="mt-10 flex w-full max-w-sm flex-col items-center gap-4">
+          <Label className="flex w-full" htmlFor="profile_img">
+            프로필 사진
+          </Label>
+          <Input type="file" id="profile_img" onChange={handleFile} />
         </div>
-        <div className="mt-10 flex grid w-full max-w-sm items-center gap-2">
-          <Label htmlFor="nickname">닉네임</Label>
+        <div className="mt-10 flex w-full max-w-sm flex-col items-center gap-4">
+          <Label className="flex w-full" htmlFor="nickname">
+            닉네임
+          </Label>
           <Input id="nickname" {...register('nickname')} />
           {errors.nickname && <p className="text-xs text-red-500">{errors.nickname.message}</p>}
         </div>
-        <div className="mt-10 flex grid w-full max-w-sm items-center gap-2">
-          <Label htmlFor="password">비밀번호</Label>
+        <div className="mt-10 flex  w-full max-w-sm flex-col items-center gap-4">
+          <Label className="flex w-full" htmlFor="password">
+            비밀번호
+          </Label>
           <Input type="password" id="password" {...register('password')} />
           {errors.password && <p className="text-xs text-red-500">{errors.password.message}</p>}
         </div>
-        <div className="mt-10 flex grid w-full max-w-sm items-center gap-2">
-          <Label htmlFor="confirmPassword">비밀번호 확인</Label>
+        <div className="mt-10 flex w-full  max-w-sm flex-col items-center gap-4">
+          <Label className="flex w-full" htmlFor="confirmPassword">
+            비밀번호 확인
+          </Label>
           <Input type="password" id="confirmPassword" {...register('confirmPassword')} />
           {errors.confirmPassword && <p className="text-xs text-red-500">{errors.confirmPassword.message}</p>}
         </div>
-        <Button type="submit">회원가입</Button>
+        {/* <Button type="submit">회원가입</Button> */}
+        <Cta text={'회원가입'} onclick={handleSubmit(onSubmit)} />
       </form>
     </div>
   );

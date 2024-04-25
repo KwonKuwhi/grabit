@@ -16,7 +16,7 @@ export const friend = pgTable('friend', {
     .references(() => users.userid_num, {
       onDelete: 'cascade',
     }),
-  other_userid_num: integer('friend_userid_num')
+  other_userid_num: integer('other_userid_num')
     .notNull()
     .references(() => users.userid_num, {
       onDelete: 'cascade',

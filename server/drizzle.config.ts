@@ -1,5 +1,5 @@
 import type { Config } from 'drizzle-kit';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
@@ -7,7 +7,7 @@ export default {
     './src/modules/user/schema.ts',
     './src/modules/account/schema.ts',
     './src/modules/challenge/schema.ts',
-    './src/modules/alarm/schema.ts',
+    './src/modules/notification/schema.ts',
     './src/modules/daily_mission/schema.ts',
     './src/modules/friend/schema.ts',
   ],

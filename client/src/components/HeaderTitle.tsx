@@ -16,14 +16,12 @@ function HeaderTitle() {
     window.addEventListener('scroll', updateScroll);
   });
 
-  console.log(useSelector((state: RootState) => state.login));
-
   return (
     <header
       className={
         scrollPosition > 50
-          ? 'fixed left-0 right-0 top-0 z-[999] flex items-center justify-between border-b-2 bg-white px-4 py-3 transition-all'
-          : 'fixed left-0 right-0 top-0 z-[999] flex items-center justify-between bg-white px-4 py-3 transition-all'
+          ? 'fixed left-0 right-0 top-0 z-[999] flex items-center justify-between bg-grabit-50/50 px-4 py-3 backdrop-blur-md'
+          : 'fixed left-0 right-0 top-0 z-[999] flex items-center justify-between bg-grabit-50 px-4 py-3'
       }
     >
       <div onClick={() => navigate(backPath)} className="flex p-2">
@@ -31,7 +29,7 @@ function HeaderTitle() {
       </div>
 
       {scrollPosition > 50 ? (
-        <h1 className="absolute left-0 right-0 z-[-1] w-full text-center text-lg text-stone-700 transition-all">
+        <h1 className="absolute left-0 right-0 z-[-1] w-full text-center text-lg text-stone-800 transition-all">
           {title}
         </h1>
       ) : null}

@@ -1,20 +1,28 @@
 import { relations } from 'drizzle-orm';
-import { timestamp, integer, pgTable, serial, varchar,text } from 'drizzle-orm/pg-core';
-import { alarm } from '../alarm/schema';
+import {
+  timestamp,
+  integer,
+  pgTable,
+  serial,
+  varchar,
+  text,
+  boolean,
+} from 'drizzle-orm/pg-core';
+import { notification } from '../notification/schema';
 
 export const users = pgTable('users', {
   userid_num: serial('userid_num').primaryKey(),
   login_type: varchar('login_type', { length: 50 }).notNull(),
-  userid: varchar('userid', { length: 20 }),
+  userid: varchar('userid', { length: 100 }),
   password: varchar('password', { length: 200 }),
   name: varchar('name', { length: 100 }),
   nickname: varchar('nickname', { length: 50 }),
   profile_img: varchar('profile_img', { length: 200 }),
   score_num: integer('score_num').default(0),
-  money: integer('money').default(0),
+  carrot: integer('carrot').default(5000),
   created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updated_at: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-  refreshToken: text('refreshToken'),
+  refreshToken: text('refreshToken').array(),
 });
 
 export const userRelations = relations(users, ({ many }) => ({
@@ -26,9 +34,10 @@ export const account = pgTable('account', {
   transaction_description: varchar('transaction_description', {
     length: 100,
   }).notNull(),
-  transaction: varchar('transaction', { length: 20 }).notNull(),
-  transaction_name: integer('transaction_name').notNull(),
-  status: varchar('status', { length: 20 }).notNull(),
+  transaction_type: varchar('transaction_type', { length: 30 }).notNull(),
+  transaction_amount: integer('transaction_amount').notNull(),
+  status: boolean('status').notNull(),
+  account_info: varchar('account_info', { length: 200 }).array(),
   created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updated_at: timestamp('updated_at', { withTimezone: true }).defaultNow(),
   userid_num: integer('userid_num').references(() => users.userid_num, {
@@ -36,15 +45,8 @@ export const account = pgTable('account', {
   }),
 });
 
-// export const postsRelations = relations(account, ({ one }) => ({
-//     author: one(user, {
-//         fields: [account.userid_num],
-//         references: [user.userid_num],
-//     }),
-// }));
-
-export const userWithalarmRelations = relations(users, ({ many }) => ({
-  posts: many(alarm),
+export const userWithNotificationRelations = relations(users, ({ many }) => ({
+  posts: many(notification),
 }));
 
 export const score = pgTable('score', {
@@ -62,10 +64,3 @@ export const score = pgTable('score', {
 export const scoreRelations = relations(users, ({ one }) => ({
   score: one(score),
 }));
-
-export const tier = pgTable('tier', {
-  tier_id: serial('tier_id').primaryKey(),
-  tier_name: varchar('tier_name', { length: 30 }),
-  tier_score: integer('tier_score'),
-  tier_img: varchar('tier_img', { length: 200 }),
-});
